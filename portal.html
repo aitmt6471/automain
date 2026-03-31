@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AIT 자동화 업무 모음</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', 'Malgun Gothic', sans-serif;
+      background: #f0f2f5;
+      min-height: 100vh;
+      padding: 32px 24px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .header h1 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #1a1a2e;
+      letter-spacing: -0.3px;
+    }
+    .header p {
+      font-size: 13px;
+      color: #888;
+      margin-top: 6px;
+    }
+
+    .section-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 14px;
+      padding-left: 2px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 14px;
+      margin-bottom: 36px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 22px 16px 18px;
+      cursor: pointer;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      border: 1.5px solid transparent;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      border-color: #e0e7ff;
+    }
+    .card:active {
+      transform: translateY(0px);
+    }
+
+    .card-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+    }
+
+    .card-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #1a1a2e;
+      text-align: center;
+      line-height: 1.4;
+    }
+    .card-desc {
+      font-size: 11px;
+      color: #aaa;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    /* 아이콘 색상 테마 */
+    .theme-blue   { background: #e8f0fe; }
+    .theme-green  { background: #e6f4ea; }
+    .theme-orange { background: #fef3e2; }
+    .theme-purple { background: #f3e8fd; }
+    .theme-red    { background: #fce8e6; }
+    .theme-teal   { background: #e0f5f5; }
+
+    /* 준비중 카드 */
+    .card.soon {
+      opacity: 0.5;
+      cursor: default;
+      pointer-events: none;
+    }
+    .badge-soon {
+      font-size: 10px;
+      background: #f0f0f0;
+      color: #bbb;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 11px;
+      color: #ccc;
+      margin-top: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>⚡ AIT 자동화 업무 모음</h1>
+    <p>사내 자동화 도구 및 배포된 업무 시스템 모음집</p>
+  </div>
+
+  <!-- 섹션 1: 설비관리 -->
+  <div class="section-title">설비 관리</div>
+  <div class="grid">
+
+    <a class="card" href="https://aitmt6471.github.io/aaf/" target="_blank">
+      <div class="card-icon theme-blue">🏭</div>
+      <div class="card-title">설비 이력카드<br>TPM 시스템</div>
+      <div class="card-desc">설비 고장접수·조치·<br>PM 관리 통합</div>
+    </a>
+
+    <div class="card soon">
+      <div class="card-icon theme-green">📊</div>
+      <div class="card-title">통계 대시보드</div>
+      <div class="card-desc">MTBF / MTTR<br>분석 현황</div>
+      <span class="badge-soon">준비중</span>
+    </div>
+
+    <div class="card soon">
+      <div class="card-icon theme-orange">🔧</div>
+      <div class="card-title">스페어파트<br>재고 관리</div>
+      <div class="card-desc">부품 입출고·<br>안전재고 관리</div>
+      <span class="badge-soon">준비중</span>
+    </div>
+
+  </div>
+
+  <!-- 섹션 2: 평가/경진 -->
+  <div class="section-title">평가 / 경진대회</div>
+  <div class="grid">
+
+    <div class="card soon">
+      <div class="card-icon theme-purple">🏆</div>
+      <div class="card-title">경진대회<br>정량평가표</div>
+      <div class="card-desc">사무업무 자동화<br>평가 시트</div>
+      <span class="badge-soon">준비중</span>
+    </div>
+
+    <div class="card soon">
+      <div class="card-icon theme-teal">📋</div>
+      <div class="card-title">업무 자동화<br>CFT 관리</div>
+      <div class="card-desc">자동화 과제<br>관리 체계</div>
+      <span class="badge-soon">준비중</span>
+    </div>
+
+  </div>
+
+  <footer>AIT 설비관리팀 · 자동화 업무 포털</footer>
+
+</body>
+</html>
