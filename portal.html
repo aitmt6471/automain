@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AIT 자동화 업무 모음</title>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
       font-family: 'Segoe UI', 'Malgun Gothic', sans-serif;
@@ -18,12 +23,14 @@
       text-align: center;
       margin-bottom: 36px;
     }
+
     .header h1 {
       font-size: 22px;
       font-weight: 700;
       color: #1a1a2e;
       letter-spacing: -0.3px;
     }
+
     .header p {
       font-size: 13px;
       color: #888;
@@ -38,16 +45,20 @@
       letter-spacing: 0.8px;
       margin-bottom: 14px;
       padding-left: 2px;
+      text-align: center;
     }
 
     .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 14px;
       margin-bottom: 36px;
     }
 
     .card {
+      width: 180px;
+      flex-shrink: 0;
       background: #fff;
       border-radius: 14px;
       padding: 22px 16px 18px;
@@ -58,14 +69,16 @@
       align-items: center;
       gap: 10px;
       border: 1.5px solid transparent;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
       transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
     }
+
     .card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
       border-color: #e0e7ff;
     }
+
     .card:active {
       transform: translateY(0px);
     }
@@ -87,6 +100,7 @@
       text-align: center;
       line-height: 1.4;
     }
+
     .card-desc {
       font-size: 11px;
       color: #aaa;
@@ -95,12 +109,63 @@
     }
 
     /* 아이콘 색상 테마 */
-    .theme-blue   { background: #e8f0fe; }
-    .theme-green  { background: #e6f4ea; }
-    .theme-orange { background: #fef3e2; }
-    .theme-purple { background: #f3e8fd; }
-    .theme-red    { background: #fce8e6; }
-    .theme-teal   { background: #e0f5f5; }
+    .theme-blue {
+      background: #e8f0fe;
+    }
+
+    .theme-green {
+      background: #e6f4ea;
+    }
+
+    .theme-orange {
+      background: #fef3e2;
+    }
+
+    .theme-purple {
+      background: #f3e8fd;
+    }
+
+    .theme-red {
+      background: #fce8e6;
+    }
+
+    .theme-teal {
+      background: #e0f5f5;
+    }
+
+    .theme-indigo {
+      background: #eef0fd;
+    }
+
+    .theme-yellow {
+      background: #fffde7;
+    }
+
+    /* 서브 카드 */
+    .card.sub {
+      width: 140px;
+      opacity: 0.75;
+      padding: 16px 12px 14px;
+    }
+    .card.sub .card-icon {
+      width: 40px;
+      height: 40px;
+      font-size: 20px;
+    }
+    .card.sub .card-title {
+      font-size: 11px;
+    }
+    .card.sub .card-desc {
+      font-size: 10px;
+    }
+    .badge-sub {
+      font-size: 10px;
+      background: #e8f0fe;
+      color: #5b8dee;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
 
     /* 준비중 카드 */
     .card.soon {
@@ -108,6 +173,7 @@
       cursor: default;
       pointer-events: none;
     }
+
     .badge-soon {
       font-size: 10px;
       background: #f0f0f0;
@@ -125,6 +191,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <div class="header">
@@ -136,41 +203,64 @@
   <div class="section-title">설비 관리</div>
   <div class="grid">
 
-    <a class="card" href="https://aitmt6471.github.io/aaf/" target="_blank">
+    <a class="card" href="https://aitmt6471.github.io/TPM/" target="_blank">
       <div class="card-icon theme-blue">🏭</div>
-      <div class="card-title">설비 이력카드<br>TPM 시스템</div>
-      <div class="card-desc">설비 고장접수·조치·<br>PM 관리 통합</div>
+      <div class="card-title">설비관리 시스템<br>(관리자용)</div>
+      <div class="card-desc">설비 이력·PM·<br>통계 통합 관리</div>
     </a>
 
-    <div class="card soon">
-      <div class="card-icon theme-green">📊</div>
-      <div class="card-title">통계 대시보드</div>
-      <div class="card-desc">MTBF / MTTR<br>분석 현황</div>
-      <span class="badge-soon">준비중</span>
-    </div>
-
-    <div class="card soon">
-      <div class="card-icon theme-orange">🔧</div>
-      <div class="card-title">스페어파트<br>재고 관리</div>
-      <div class="card-desc">부품 입출고·<br>안전재고 관리</div>
-      <span class="badge-soon">준비중</span>
-    </div>
+    <a class="card" href="https://aitmt6471.github.io/TPM/report.html" target="_blank">
+      <div class="card-icon theme-teal">🔧</div>
+      <div class="card-title">설비관리 시스템<br>(현장용)</div>
+      <div class="card-desc">고장접수·조치입력<br>현장 작업자 전용</div>
+    </a>
 
   </div>
 
-  <!-- 섹션 2: 평가/경진 -->
+  <!-- 섹션 2: 근태 관리 -->
+  <div class="section-title">근태 관리</div>
+  <div class="grid">
+
+    <a class="card" href="https://aitmt6471.github.io/aaf/" target="_blank">
+      <div class="card-icon theme-yellow">⏰</div>
+      <div class="card-title">작업자 근태</div>
+      <div class="card-desc">출퇴근·근무시간<br>근태 현황 관리</div>
+    </a>
+
+    <a class="card sub" href="https://docs.google.com/spreadsheets/d/1Eux9biqPW5DSGpsNTaqDCQQB2It4qSphQQKdJ2iPumY/edit?gid=1588285255#gid=1588285255" target="_blank">
+      <div class="card-icon theme-green">📊</div>
+      <div class="card-title">근태 시트</div>
+      <div class="card-desc">Google Sheets<br>원본 데이터</div>
+      <span class="badge-sub">시트</span>
+    </a>
+
+  </div>
+
+  <!-- 섹션 3: 사무 자동화 -->
+  <div class="section-title">사무 자동화</div>
+  <div class="grid">
+
+    <a class="card" href="https://automation-mgmt.vercel.app/" target="_blank">
+      <div class="card-icon theme-purple">🤖</div>
+      <div class="card-title">사무자동화<br>관리 시스템</div>
+      <div class="card-desc">업무 자동화<br>통합 관리 포털</div>
+    </a>
+
+  </div>
+
+  <!-- 섹션 4: 평가/경진 -->
   <div class="section-title">평가 / 경진대회</div>
   <div class="grid">
 
     <div class="card soon">
-      <div class="card-icon theme-purple">🏆</div>
+      <div class="card-icon theme-indigo">🏆</div>
       <div class="card-title">경진대회<br>정량평가표</div>
       <div class="card-desc">사무업무 자동화<br>평가 시트</div>
       <span class="badge-soon">준비중</span>
     </div>
 
     <div class="card soon">
-      <div class="card-icon theme-teal">📋</div>
+      <div class="card-icon theme-red">📋</div>
       <div class="card-title">업무 자동화<br>CFT 관리</div>
       <div class="card-desc">자동화 과제<br>관리 체계</div>
       <span class="badge-soon">준비중</span>
@@ -178,7 +268,8 @@
 
   </div>
 
-  <footer>AIT 설비관리팀 · 자동화 업무 포털</footer>
+  <footer>AIT 오토파일럿CFT · 자동화 업무 포털</footer>
 
 </body>
+
 </html>
