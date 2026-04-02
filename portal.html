@@ -167,6 +167,25 @@
       font-weight: 500;
     }
 
+    /* 서브 링크 버튼 */
+    .btn-sub {
+      display: block;
+      width: 100%;
+      text-align: center;
+      font-size: 11px;
+      font-weight: 500;
+      color: #5b8dee;
+      background: #e8f0fe;
+      border-radius: 8px;
+      padding: 5px 0;
+      text-decoration: none;
+      margin-top: 2px;
+      transition: background 0.15s;
+    }
+    .btn-sub:hover {
+      background: #d2e3fc;
+    }
+
     /* 준비중 카드 */
     .card.soon {
       opacity: 0.5;
@@ -199,7 +218,19 @@
     <p>사내 자동화 도구 및 배포된 업무 시스템 모음집</p>
   </div>
 
-  <!-- 섹션 1: 설비관리 -->
+  <!-- 섹션 1: 사무 자동화 -->
+  <div class="section-title">사무 자동화</div>
+  <div class="grid">
+
+    <a class="card" href="https://automation-mgmt.vercel.app/" target="_blank">
+      <div class="card-icon theme-purple">🤖</div>
+      <div class="card-title">사무자동화<br>관리 시스템</div>
+      <div class="card-desc">업무 자동화<br>통합 관리 포털</div>
+    </a>
+
+  </div>
+
+  <!-- 섹션 2: 설비관리 -->
   <div class="section-title">설비 관리</div>
   <div class="grid">
 
@@ -217,34 +248,16 @@
 
   </div>
 
-  <!-- 섹션 2: 근태 관리 -->
+  <!-- 섹션 3: 근태 관리 -->
   <div class="section-title">근태 관리</div>
   <div class="grid">
 
-    <a class="card" href="https://aitmt6471.github.io/aaf/" target="_blank">
+    <div class="card" onclick="window.open('https://aitmt6471.github.io/aaf/','_blank')" style="cursor:pointer;">
       <div class="card-icon theme-yellow">⏰</div>
       <div class="card-title">작업자 근태</div>
       <div class="card-desc">출퇴근·근무시간<br>근태 현황 관리</div>
-    </a>
-
-    <a class="card sub" href="https://docs.google.com/spreadsheets/d/1Eux9biqPW5DSGpsNTaqDCQQB2It4qSphQQKdJ2iPumY/edit?gid=1588285255#gid=1588285255" target="_blank">
-      <div class="card-icon theme-green">📊</div>
-      <div class="card-title">근태 시트</div>
-      <div class="card-desc">Google Sheets<br>원본 데이터</div>
-      <span class="badge-sub">시트</span>
-    </a>
-
-  </div>
-
-  <!-- 섹션 3: 사무 자동화 -->
-  <div class="section-title">사무 자동화</div>
-  <div class="grid">
-
-    <a class="card" href="https://automation-mgmt.vercel.app/" target="_blank">
-      <div class="card-icon theme-purple">🤖</div>
-      <div class="card-title">사무자동화<br>관리 시스템</div>
-      <div class="card-desc">업무 자동화<br>통합 관리 포털</div>
-    </a>
+      <a class="btn-sub" href="https://docs.google.com/spreadsheets/d/1Eux9biqPW5DSGpsNTaqDCQQB2It4qSphQQKdJ2iPumY/edit?gid=1588285255#gid=1588285255" target="_blank" onclick="event.stopPropagation()">📊 시트 바로가기</a>
+    </div>
 
   </div>
 
