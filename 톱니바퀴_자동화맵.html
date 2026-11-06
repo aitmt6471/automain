@@ -87,7 +87,7 @@ a.sat{cursor:pointer}.sat:hover{z-index:5}
 .pill{font:500 11px var(--mono);padding:1px 8px;border-radius:99px;white-space:nowrap;background:color-mix(in srgb,currentColor 15%,transparent)}
 .pill.live{color:var(--live)}.pill.build{color:var(--build)}.pill.plan{color:var(--plan)}.pill.off{color:var(--off)}
 /* 오른쪽 패널: 평소에는 공정별 현황, 톱니바퀴를 누르면 그 공정의 자동화 목록 */
-.main{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:24px;align-items:start}
+.main{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:24px;align-items:start}
 @media(max-width:1000px){.main{grid-template-columns:minmax(0,1fr)}}
 .detail{position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto}
 .ovl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
@@ -187,7 +187,7 @@ function ringHtml(){
   const m=.15,Wu=x1-x0+2*m,Hu=y1-y0+2*m;
   return {Wu,html:`<div class="cwo"><div class="cw" style="--W:${Wu.toFixed(3)}"><div class="cl" data-flt="${flt}" style="--H:${Hu.toFixed(3)}"><div style="position:absolute;left:calc(var(--d)*${(m-x0).toFixed(3)});top:calc(var(--d)*${(m-y0).toFixed(3)});width:0;height:0">${h}</div></div></div></div>`}}
 function panel(){
-  if(!cur)return `<h3>공정별 현황</h3><div class="ovl">${NAMES.map((nm,i)=>{const n=i+1;return `<button type="button" class="ovr" data-n="${n}"><span class="no-b">${n}</span><span>${nm}</span><span class="c">${tot(n)?`<b>${liv(n)}</b>/${tot(n)}`:'-'}</span></button>`}).join('')}</div>`;
+  if(!cur)return `<h3>공정별 현황</h3><p class="hint">톱니바퀴를 누르면 해당 공정의 자동화 목록이 나옵니다.</p>`;
   const items=D[cur],e=ed>=0?items[ed]:null,hid=collapsed.has(cur);
   return `<h3><button type="button" class="mini" data-act="all">← 전체</button><span class="no-b">${cur}</span>${NAMES[cur-1]} <span class="hint">가동중 ${liv(cur)} / 전체 ${tot(cur)}</span>${chainsOpen&&tot(cur)?`<button type="button" class="mini" data-act="chain">${hid?'작은 톱니바퀴 펼치기':'작은 톱니바퀴 접기'}</button>`:''}</h3>
   ${items.length?`<ul class="alist">${items.map((it,i)=>!editMode?`<li><span class="pill ${it.s}">${L[it.s]}</span><span>${i+1}. ${lnk(it)}${subLnk(it)}</span><span></span></li>`:`<li><select class="stsel ${it.s}" data-i="${i}" aria-label="${esc(it.t)} 상태">${Object.keys(L).map(k=>`<option value="${k}"${it.s===k?' selected':''}>${L[k]}</option>`).join('')}</select><span>${i+1}. ${lnk(it)}${subLnk(it)}</span><span class="acts"><button type="button" class="mini" data-act="edit" data-i="${i}">수정</button><button type="button" class="mini" data-act="del" data-i="${i}" aria-label="${esc(it.t)} 삭제">삭제</button></span></li>`).join('')}</ul>`:`<p class="hint">등록된 자동화가 없습니다.${editMode?' 아래에서 추가하세요.':''}</p>`}
