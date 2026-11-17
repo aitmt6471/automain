@@ -196,7 +196,10 @@ function panel(){
 function build(){
   const r=ringHtml();
   el.innerHTML=`<div class="stage${still?' still':''}"><div class="tool"><div class="chips" role="group" aria-label="상태 필터">${[['all','전체'],['live','가동중'],['build','구축중'],['plan','계획중'],['off','미사용']].map(([k,v])=>`<button type="button" data-flt="${k}" aria-pressed="${flt===k}">${k==='all'?'':`<i class="d" style="background:var(--${k})"></i>`}${v}</button>`).join('')}</div><span class="sp"></span><button type="button" class="btn" data-act="chains" aria-pressed="${!chainsOpen}">${chainsOpen?'작은 톱니바퀴 숨기기':'작은 톱니바퀴 펼치기'}</button><button type="button" class="btn" data-act="still" aria-pressed="${still}">${still?'돌리기':'멈추기'}</button><button type="button" class="btn" data-act="auth" aria-pressed="${editMode}">${editMode?'수정 모드 끝내기':'수정 모드'}</button></div><form class="auth" autocomplete="off" ${authOpen&&!editMode?'':'hidden'}><input id="pw" type="password" placeholder="수정 비밀번호" aria-label="수정 비밀번호" autocomplete="off"><button type="submit">확인</button><button type="button" class="ghost" data-act="authx">취소</button><span class="hint" id="pwmsg"></span></form><div class="main"><div class="scroll"><div style="min-width:${chainsOpen?940:620}px;max-width:${chainsOpen?'1250px':'1100px'};margin:0 auto">${r.html}</div></div><aside class="detail" aria-live="polite"></aside></div></div>`;
-  draw()}
+  draw();fit()}
+// cqw 미지원 브라우저용: 톱니 한 칸 크기(--d)를 JS로 계산
+function fit(){const w=$('.cwo',el),c=$('.cw',el);if(w&&c&&w.clientWidth)c.style.setProperty('--d',w.clientWidth/parseFloat(c.style.getPropertyValue('--W'))+'px')}
+addEventListener('resize',fit);
 const note=ok=>{const m=$('#msg',el);if(m)m.textContent=ok?'저장했습니다. (이 브라우저에만 저장됩니다)':'저장되지 않았습니다. 이 환경에서는 저장이 막혀 있어 화면을 닫으면 사라집니다.'};
 function draw(){
   $$('.rb',el).forEach(b=>{const n=+b.dataset.n;b.classList.toggle('on',n===cur);b.classList.toggle('empty',!tot(n));b.classList.toggle('dim',flt!=='all'&&!D[n].some(i=>i.s===flt))});
